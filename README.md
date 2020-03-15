@@ -14,9 +14,8 @@ for a single country and:<br/>
 <br/>
 python c19_Multiple.py<br/>
 <br/>
-for multiple countries. Feel free to create your own country list <br/>
+for multiple countries. Feel free to create your own country list 
 to see the result. <br/>
-you can edit the country name but it is for the United States by default. <br/>
 We plot total confirmed, recovered and death. There is also a plot for growth factor which is defined as: <br/>
    f=N_today/N_yesterday <br/>
 where N is the total number of new cases (today is compared to yesterday).<br/>
