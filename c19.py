@@ -18,8 +18,6 @@ csvURL='https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_co
 country="US"
 
 
-
-#import pandas as pd
 #some of the early dates have different file structure and you may see an error
 f_date = date(2020, 2, 5)
 l_date = date.today()
@@ -47,6 +45,17 @@ ax4 = fig1.add_subplot(234)
 ax4.set_xlabel('days ago')
 ax4.set_ylabel('Growth factor')
 ax4.set_xlim(daycount, -7)
+
+ax5 = fig1.add_subplot(235)
+ax5.set_xlabel('days ago')
+ax5.set_ylabel('Recovery ratio')
+ax5.set_xlim(daycount, -7)
+
+ax6 = fig1.add_subplot(236)
+ax6.set_xlabel('days ago')
+ax6.set_ylabel('Death ratio')
+ax6.set_xlim(daycount, -7)
+
 
 i=0
 ####### These are lists of the values for all days
@@ -93,12 +102,15 @@ for n in range(0,daycount):
     GrowthFactorAll[i]=GrowthFactor
     i+=1
 print(GrowthFactor)
-ax1.plot(daysaxis,totConfirmed,'y+',label="Confirmed")
-ax2.plot(daysaxis,totRecovered,'go',label="Recovered")
-ax3.plot(daysaxis,totDeath,'rx',label="Deaths")
+ax1.plot(daysaxis,totConfirmed,'k+',label="Confirmed")
+ax2.plot(daysaxis,totRecovered,'ko',label="Recovered")
+ax3.plot(daysaxis,totDeath,'kx',label="Deaths")
 ax4.plot(daysaxis,GrowthFactorAll,'k',linestyle='-',label="Growth factor")
 ax4.plot(daysaxis,g1,'b',linestyle=':',label="Inflection Point")
 ax4.annotate('today:'+str(round(GrowthFactor,2)),xy=(daycount-5,GrowthFactor+1.5))
+ax5.plot(daysaxis,np.divide(totRecovered,totConfirmed),'k',linestyle='-',label="Recovery ratio")
+ax6.plot(daysaxis,np.divide(totDeath,totConfirmed),'k',linestyle='-',label="Death ratio")
+
 #for i,j in zip(daysaxis,GrowthFactorAll):
 #    if j>0.9 and j<1.1:
 #        ax4.annotate(str(round(j,2)),xy=(i+0.1,j+0.5))
@@ -106,5 +118,7 @@ ax1.legend(loc=2)
 ax2.legend(loc=2)
 ax3.legend(loc=2)
 ax4.legend(loc=2)
+ax5.legend(loc=1)
+ax6.legend(loc=2)
 plt.show()
 #print(countries)
