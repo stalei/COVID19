@@ -9,7 +9,7 @@ https://www.youtube.com/watch?v=Kas0tIxDvrg&feature=youtu.be
 <br/>
 You can simply run: <br/>
 <br/>
-python cv19.py<br/>
+python c19.py<br/>
 <br/>
 to see the result. <br/>
 you can edit the country name but it is for the United States by default. <br/>
