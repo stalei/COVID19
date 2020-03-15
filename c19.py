@@ -5,7 +5,7 @@
 #(at your option) any later version.
 #You should have received a copy of the GNU General Public License
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+# This code is distributed as is and there is no warranty or technical support
 
 import csv
 import urllib.request
@@ -95,7 +95,7 @@ for n in range(0,daycount):
 print(GrowthFactor)
 ax1.plot(daysaxis,totConfirmed,'y+',label="Confirmed")
 ax2.plot(daysaxis,totRecovered,'go',label="Recovered")
-ax3.plot(daysaxis,totDeath,'rx',label="Death")
+ax3.plot(daysaxis,totDeath,'rx',label="Deaths")
 ax4.plot(daysaxis,GrowthFactorAll,'k',linestyle='-',label="Growth factor")
 ax4.plot(daysaxis,g1,'b',linestyle=':',label="Inflection Point")
 ax4.annotate('today:'+str(round(GrowthFactor,2)),xy=(daycount-5,GrowthFactor+1.5))
