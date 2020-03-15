@@ -15,7 +15,7 @@ import numpy as np
 import io
 
 csvURL='https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/'
-countriesList=["US","Italy","Iran","Spain"]
+countriesList=["US","Italy","Spain"]
 
 
 #some of the early dates have different file structure and you may see an error
@@ -117,7 +117,7 @@ for country in countriesList:
 ax1.legend(loc=4)
 ax2.legend(loc=4)
 ax3.legend(loc=4)
-ax4.legend(loc=3)
+ax4.legend(loc=1)
 ax5.legend(loc=1)
 ax6.legend(loc=1)
 plt.show()
