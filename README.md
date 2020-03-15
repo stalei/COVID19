@@ -11,6 +11,11 @@ You can simply run: <br/>
 <br/>
 python c19.py<br/>
 <br/>
+and:
+<br/>
+python c19.py<br/>
+<br/>
+for multiple countries. Feel free to create your own country list <br/>
 to see the result. <br/>
 you can edit the country name but it is for the United States by default. <br/>
 We plot total confirmed, recovered and death. There is also a plot for growth factor which is defined as: <br/>
