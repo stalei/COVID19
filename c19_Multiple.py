@@ -25,7 +25,7 @@ delta = l_date - f_date
 daycount=delta.days
 totEachDay=[0]*daycount
 fig1 = plt.figure(figsize=plt.figaspect(1./3.))
-fig1.suptitle('COVID-19 in: ' + ' ( date: '+str(l_date)+')')
+fig1.suptitle('COVID-19 - ' + ' ( date (0): '+str(l_date)+')')
 ax1 = fig1.add_subplot(231)
 ax1.set_xlabel('days ago')
 ax1.set_ylabel('Log(N)')
