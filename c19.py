@@ -25,7 +25,7 @@ delta = l_date - f_date
 daycount=delta.days
 totEachDay=[0]*daycount
 fig1 = plt.figure(figsize=plt.figaspect(1./3.))
-fig1.suptitle('COVID-19 in: '+country)
+fig1.suptitle('COVID-19 in: '+country + ' ( date: '+str(l_date)+')')
 ax1 = fig1.add_subplot(231)
 ax1.set_xlabel('days ago')
 ax1.set_ylabel('N')
@@ -44,17 +44,17 @@ ax3.title.set_text('Deaths')
 ax4 = fig1.add_subplot(234)
 ax4.set_xlabel('days ago')
 ax4.set_ylabel('Growth factor')
-ax4.set_xlim(daycount, -7)
+ax4.set_xlim(daycount, -1)
 
 ax5 = fig1.add_subplot(235)
 ax5.set_xlabel('days ago')
 ax5.set_ylabel('Recovery ratio')
-ax5.set_xlim(daycount, -7)
+ax5.set_xlim(daycount, -1)
 
 ax6 = fig1.add_subplot(236)
 ax6.set_xlabel('days ago')
 ax6.set_ylabel('Death ratio')
-ax6.set_xlim(daycount, -7)
+ax6.set_xlim(daycount, -1)
 
 
 i=0
@@ -107,7 +107,7 @@ ax2.plot(daysaxis,totRecovered,'ko',label="Recovered")
 ax3.plot(daysaxis,totDeath,'kx',label="Deaths")
 ax4.plot(daysaxis,GrowthFactorAll,'k',linestyle='-',label="Growth factor")
 ax4.plot(daysaxis,g1,'b',linestyle=':',label="Inflection Point")
-ax4.annotate('today:'+str(round(GrowthFactor,2)),xy=(daycount-5,GrowthFactor+1.5))
+ax4.annotate('latest:'+str(round(GrowthFactor,2)),xy=(daycount-5,GrowthFactor+1.5))
 ax5.plot(daysaxis,np.divide(totRecovered,totConfirmed),'k',linestyle='-',label="Recovery ratio")
 ax6.plot(daysaxis,np.divide(totDeath,totConfirmed),'k',linestyle='-',label="Death ratio")
 
