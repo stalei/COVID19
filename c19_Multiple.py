@@ -24,7 +24,7 @@ HospitalBeds=924107 #https://www.washingtonpost.com/business/2020/03/14/hospital
 Ventilators=160000 #http://www.centerforhealthsecurity.org/resources/COVID-19/200214-VentilatorAvailability-factsheet.pdf
 #reference of these numbers:
 #
-
+plt.rcParams["font.size"] =13
 
 
 #some of the early dates have different file structure and you may see an error
@@ -36,41 +36,48 @@ totEachDay=[0]*daycount
 fig1 = plt.figure(figsize=plt.figaspect(1./3.))
 fig1.suptitle('COVID-19 - ' + ' ( date (0): '+str(l_date)+')')
 ax1 = fig1.add_subplot(231)
-ax1.set_xlabel('days ago')
+#ax1.set_xlabel('days ago')
 ax1.set_ylabel('Log(N)')
-ax1.set_xlim(daycount, -3)
+ax1.set_xlim(daycount-1, -3)
 ax1.title.set_text('Confirmed')
+ax1.grid(True)
 ax2 = fig1.add_subplot(232)
-ax2.set_xlabel('days ago')
+#ax2.set_xlabel('days ago')
 ax2.set_ylabel('Log(N)')
-ax2.set_xlim(daycount, -3)
+ax2.set_xlim(daycount-1, -3)
 ax2.title.set_text('Recovered')
+ax2.grid(True)
 ax3 = fig1.add_subplot(233)
-ax3.set_xlabel('days ago')
+#ax3.set_xlabel('days ago')
 ax3.set_ylabel('Log(N)')
-ax3.set_xlim(daycount, -3)
+ax3.set_xlim(daycount-1, -3)
 ax3.title.set_text('Deaths')
+ax3.grid(True)
 ax4 = fig1.add_subplot(234)
 ax4.set_xlabel('days ago')
 ax4.set_ylabel('Growth factor')
-ax4.set_xlim(daycount, -3)
+ax4.set_xlim(daycount-2, -3)
+ax4.set_ylim(-2, 10)
+ax4.axhspan(1, 10, alpha=0.15, color='red')
+ax4.axhspan(-2, 1, alpha=0.15, color='green')
 
+ax4.grid(True)
 ax5 = fig1.add_subplot(235)
 ax5.set_xlabel('days ago')
 ax5.set_ylabel('Recovery ratio')
-ax5.set_xlim(daycount, -3)
-
+ax5.set_xlim(daycount-1, -3)
+ax5.grid(True)
 ax6 = fig1.add_subplot(236)
 ax6.set_xlabel('days ago')
 ax6.set_ylabel('Death ratio')
-ax6.set_xlim(daycount, -3)
-
+ax6.set_xlim(daycount-1, -3)
+ax6.grid(True)
 #inverse axis for days ago on x
 daysaxis=range(daycount-1,-1,-1)
 daysaxis_1=range(daycount-2,-1,-1)
 g1=[1]*daycount
-ax4.plot(daysaxis,g1,'b',linestyle=':',label="Inflection Point")
-
+#ax4.plot(daysaxis,g1,'b',linestyle=':',label="Inflection Point")
+ax4.hlines(y=1,xmin=daycount, xmax=-3,color='k',linestyle='-.',label="Inflection Point")
 for country in countriesList:
     i=0
     ####### These are lists of the values for all days
@@ -117,7 +124,7 @@ for country in countriesList:
     ax1.plot(daysaxis,np.log10(totConfirmed),'+',label=str(country))
     ax2.plot(daysaxis,np.log10(totRecovered),'o',label=str(country))
     ax3.plot(daysaxis,np.log10(totDeath),'x',label=str(country))
-    ax4.plot(daysaxis_1,GrowthFactorAll2,linestyle='-',label=str(country))
+    ax4.plot(daysaxis_1,GrowthFactorAll2,linestyle='-',label=str(country)+'='+str(round(GrowthFactor,2)))
     #ax4.annotate('latest('+str(country)+'):'+str(round(GrowthFactor,2)),xy=(daycount-2,GrowthFactor-2.5))
     ax5.plot(daysaxis,np.divide(totRecovered,totConfirmed),linestyle='-',label=str(country))
     ax6.plot(daysaxis,np.divide(totDeath,totConfirmed),linestyle='-',label=str(country))
@@ -130,6 +137,6 @@ ax2.legend(loc=4)
 ax3.legend(loc=4)
 ax4.legend(loc=1)
 ax5.legend(loc=1)
-ax6.legend(loc=1)
+ax6.legend(loc=2)
 plt.show()
 #print(countries)
